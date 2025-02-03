@@ -1,16 +1,16 @@
 package gr.codehub.iolab.domain;
 
 public class Student {
-    private String id;
+    private String studentId;
     private String name;
 
-    public Student(String id, String name) {
-        this.id = id;
+    public Student(String studentId, String name) {
+        this.studentId = studentId;
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getStudentId() {
+        return studentId;
     }
 
     public String getName() {
