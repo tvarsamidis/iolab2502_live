@@ -3,17 +3,18 @@ package gr.codehub.iolab.interfaces;
 import gr.codehub.iolab.domain.Course;
 import gr.codehub.iolab.domain.Enrollment;
 import gr.codehub.iolab.domain.Student;
+import gr.codehub.iolab.domain.CourseEnrollmentException;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloWorld {
+public class MainTask2 {
 
-//    private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+//    private static final Logger logger = LoggerFactory.getLogger(MainTask2.class);
 
     private static final ch.qos.logback.classic.Logger logger =
-            (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(HelloWorld.class);
+            (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(MainTask2.class);
 
     public static void main(String[] args) {
         logger.info("This is the logger speaking!");
@@ -38,15 +39,34 @@ public class HelloWorld {
 
         Enrollment e1 = new Enrollment(s1, c1);
 
+        try {
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+            s1.addEnrollment(e1);
+        } catch (CourseEnrollmentException e) {
+            System.out.println("Something happened in a ThomasBusiness operation: " + e.getMessage());
+        }
+        logger.info("Student {} has enrolled in {} courses",
+                s1.getName(),
+                s1.getEnrollments().size()
+        );
 
-        s1.getEnrollments().add(e1);
-        s1.getEnrollments().add(e1);
-        s1.getEnrollments().add(e1);
+        logger.info("Clearing enrollments");
+        s1.clearEnrollments();
 
         logger.info("Student {} has enrolled in {} courses",
                 s1.getName(),
                 s1.getEnrollments().size()
-                );
+        );
+
 
     }
 }
