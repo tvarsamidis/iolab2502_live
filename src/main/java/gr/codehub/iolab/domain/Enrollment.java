@@ -6,11 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Enrollment {
-
-    // private int enrollmentId;
-
+    // private int enrollmentId; // should be here but ignored for session convenience
     private Student student;
-
     private Course course;
-
 }

@@ -1,11 +1,17 @@
 package gr.codehub.iolab.domain;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Student {
+
+    private static Logger logger = LoggerFactory.getLogger(Student.class);
+
     private String studentId;
     private String name;
     private Set<Enrollment> enrollments;
@@ -45,7 +51,7 @@ public class Student {
             throw new CourseEnrollmentException("Cannot enroll on more than 5 courses");
         } else {
             enrollments.add(e);
-            System.out.println("ADDED NEW ENROLLMENT FOR STUDENT " + e.getCourse().getTitle());
+            logger.info("ADDED NEW ENROLLMENT FOR STUDENT {}", e.getCourse().getTitle());
             return 0;
         }
     }
@@ -54,7 +60,4 @@ public class Student {
         Enrollment e = new Enrollment(this, c);
         return addEnrollment(e);
     }
-
-
-
 }

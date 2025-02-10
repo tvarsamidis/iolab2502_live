@@ -1,11 +1,17 @@
 package gr.codehub.iolab.interfaces;
 
+
 import gr.codehub.iolab.domain.Course;
-import gr.codehub.iolab.domain.Student;
 import gr.codehub.iolab.domain.CourseEnrollmentException;
+import gr.codehub.iolab.domain.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MainTask3 {
-    public static void main(String[] args) throws Exception {
+
+    private static Logger logger = LoggerFactory.getLogger(MainTask2.class);
+
+    public static void main(String[] args) {
         Student alice = new Student("S001", "Alice Johnson");
         Course cs101 = new Course("CS101", "Introduction to Programming");
         Course cs102 = new Course("CS102", "Data Structures");
@@ -24,7 +30,7 @@ public class MainTask3 {
             code = alice.addEnrollment(cs106);
             code = alice.addEnrollment(cs106);
         } catch (CourseEnrollmentException e) {
-            System.out.println("Something happened in a ThomasBusiness operation: " + e.getMessage());
+            logger.error("Something happened in a ThomasBusiness operation: {}", e.getMessage());
         }
     }
 }

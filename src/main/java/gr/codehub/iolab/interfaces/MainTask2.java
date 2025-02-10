@@ -1,9 +1,10 @@
 package gr.codehub.iolab.interfaces;
 
 import gr.codehub.iolab.domain.Course;
+import gr.codehub.iolab.domain.CourseEnrollmentException;
 import gr.codehub.iolab.domain.Enrollment;
 import gr.codehub.iolab.domain.Student;
-import gr.codehub.iolab.domain.CourseEnrollmentException;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
@@ -11,15 +12,15 @@ import java.util.List;
 
 public class MainTask2 {
 
-//    private static final Logger logger = LoggerFactory.getLogger(MainTask2.class);
-
-    private static final ch.qos.logback.classic.Logger logger =
-            (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(MainTask2.class);
+    private static Logger logger = LoggerFactory.getLogger(MainTask2.class);
 
     public static void main(String[] args) {
-        logger.info("This is the logger speaking!");
-        logger.warn("This is a warning!");
-        logger.error("The code reached an error case");
+        String className = MainTask2.class.getSimpleName();
+        logger.trace("Trace message from {}", className);
+        logger.debug("Debug message from {}", className);
+        logger.info("Info message from {}", className);
+        logger.warn("Warn message from {}", className);
+        logger.error("Error message from {}", className);
         System.out.println("Hello world!");
 
         Student s1 = new Student("ABCD", "Thomas Varsamidis");
@@ -52,7 +53,7 @@ public class MainTask2 {
             s1.addEnrollment(e1);
             s1.addEnrollment(e1);
         } catch (CourseEnrollmentException e) {
-            System.out.println("Something happened in a ThomasBusiness operation: " + e.getMessage());
+            logger.error("Something happened in a ThomasBusiness operation: {}", e.getMessage());
         }
         logger.info("Student {} has enrolled in {} courses",
                 s1.getName(),
@@ -66,7 +67,5 @@ public class MainTask2 {
                 s1.getName(),
                 s1.getEnrollments().size()
         );
-
-
     }
 }
